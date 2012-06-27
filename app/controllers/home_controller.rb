@@ -21,9 +21,9 @@ class HomeController < ApplicationController
     #  format.json {render :json => {:success => true }}
     #end
     token = Home.token(params[:code])
-    user_details = Home.user_details(token)
+    username = Home.user_details(token)
     respond_with do |format|
-      format.json {render :json => {:success => true, :token => token, :user_details => user_details }}
+      format.json {render :json => {:success => true, :token => token, :username => username }}
     end
   end
 end

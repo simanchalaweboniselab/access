@@ -31,19 +31,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="home_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="37" selection-start="1622" selection-end="1622" vertical-scroll-proportion="0.0">
+            <state line="25" column="92" selection-start="1784" selection-end="1784" vertical-scroll-proportion="0.529661">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="home.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/home.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="12" selection-start="1046" selection-end="1046" vertical-scroll-proportion="0.5508475">
+            <state line="26" column="12" selection-start="1046" selection-end="1046" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -107,12 +107,12 @@
         <option value="$PROJECT_DIR$/app/views/home/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/home/access_token.html.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20120626083918_create_homes.rb" />
         <option value="$PROJECT_DIR$/config/database.yml" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/models/home.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
       </list>
     </option>
   </component>
@@ -657,13 +657,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="14" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/home/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="0" selection-start="99" selection-end="99" vertical-scroll-proportion="0.0" />
@@ -683,16 +676,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/home.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="37" selection-start="1622" selection-end="1622" vertical-scroll-proportion="0.0">
+        <state line="26" column="12" selection-start="1046" selection-end="1046" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/home.rb">
+    <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="12" selection-start="1046" selection-end="1046" vertical-scroll-proportion="0.5508475">
+        <state line="10" column="14" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="92" selection-start="1784" selection-end="1784" vertical-scroll-proportion="0.529661">
           <folding />
         </state>
       </provider>
