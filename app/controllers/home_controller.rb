@@ -26,4 +26,15 @@ class HomeController < ApplicationController
       format.json {render :json => {:success => true, :auth_token => token, :username => username }}
     end
   end
+  def auth_token
+    if user=Home.check_username(params[:username])
+      respond_with do |format|
+        format.json {render :json => {:success => true, :auth_token => user.token, :username => user.username }}
+      end
+    else
+      respond_with do |format|
+        format.json {render :json => {:success => false}}
+      end
+    end
+  end
 end

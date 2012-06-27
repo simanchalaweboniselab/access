@@ -26,5 +26,8 @@ class Home < ActiveRecord::Base
     user.update_attributes(:username => username)
     username
   end
+  def self.check_username(username)
+    user = self.find_by_username(username)
+  end
 
 end
