@@ -42,7 +42,6 @@
     <orderEntry type="library" scope="PROVIDED" name="rake (v0.9.2.2, Ruby SDK 1.8.7-p358) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rdoc (v3.12, Ruby SDK 1.8.7-p358) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass-rails (v3.2.5, Ruby SDK 1.8.7-p358) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.3.6, Ruby SDK 1.8.7-p358) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v0.14.6, Ruby SDK 1.8.7-p358) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tilt (v1.3.3, Ruby SDK 1.8.7-p358) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="treetop (v1.4.10, Ruby SDK 1.8.7-p358) [gem]" level="application" />

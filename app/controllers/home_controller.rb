@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   respond_to :json
   def index
   end
+  #DONE retrieve access token
   def access_token
     #client = OAuth2::Client.new("81e06b06df8444dfc400", "c29601141049ed316792c017d26fde2354ef530b", :site => 'https://github.com')
     #logger.info"+=====================================================================#{client.inspect}"
@@ -19,20 +20,10 @@ class HomeController < ApplicationController
     #respond_with do |format|
     #  format.json {render :json => {:success => true }}
     #end
-    logger.info("===================#{params[:code]}")
-    @code = params[:code]
-    token = HTTParty.post("https://github.com/login/oauth/access_token?client_id=81e06b06df8444dfc400&client_secret=c29601141049ed316792c017d26fde2354ef530b&redirect_url=localhost:3000&code=#{@code}")
-    token = token.parsed_response
-    token = token.split("=")
-    token = token[1].split("&")
-    token = token[0]
+    token = Home.token(params[:code])
+    user_details = Home.user_details(token)
     respond_with do |format|
-      format.json {render :json => {:success => true, :token => token }}
+      format.json {render :json => {:success => true, :token => token, :user_details => user_details }}
     end
   end
-
-  def sign_in
-
-  end
-
 end
