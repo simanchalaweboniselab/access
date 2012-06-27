@@ -6,12 +6,13 @@ class Home < ActiveRecord::Base
     token = token.parsed_response
     token = token.split("=")
     token = token[1].split("&")
-    if token = self.find_by_token(token[0])
-      return token[0]
+    token = token[0]
+    if token = self.find_by_token(token)
+      return token.token
     else
-      self.token = token[0]
+      self.token = token
       self.save
-      return token[0]
+      return token
     end
 
   end
