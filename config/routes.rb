@@ -7,9 +7,9 @@ Access::Application.routes.draw do
     collection do
       get "auth_token"
       end
-    #collection do
-    #  get "repo"
-    #end
+    collection do
+      get "repository"
+    end
   end
 
   # The priority is based upon order of creation:
