@@ -22,10 +22,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Gemfile" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Gemfile" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="14" selection-start="196" selection-end="196" vertical-scroll-proportion="0.20134228">
+            <state line="10" column="14" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -49,10 +49,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="access_token.html.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="access_token.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/home/access_token.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="193" selection-start="187" selection-end="196" vertical-scroll-proportion="0.0">
+            <state line="0" column="94" selection-start="79" selection-end="99" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -624,11 +624,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/home/access_token.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="193" selection-start="187" selection-end="196" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/home/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="0" selection-start="99" selection-end="99" vertical-scroll-proportion="0.0" />
@@ -669,7 +664,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="14" selection-start="196" selection-end="196" vertical-scroll-proportion="0.20134228">
+        <state line="10" column="14" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/home/access_token.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="94" selection-start="79" selection-end="99" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
