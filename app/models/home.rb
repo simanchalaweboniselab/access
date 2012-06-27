@@ -24,7 +24,7 @@ class Home < ActiveRecord::Base
     user =  self.find_by_token(token)
     logger.info"---------------------------------#{user.inspect}"
     user.update_attributes(:username => username)
-    
+    user_details
   end
 
 end
