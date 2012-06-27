@@ -6,7 +6,14 @@ class Home < ActiveRecord::Base
     token = token.parsed_response
     token = token.split("=")
     token = token[1].split("&")
-    token[0]
+    if token = self.find_by_token(token[0])
+      return token[0]
+    else
+      self.token = token[0]
+      self.save
+      return token[0]
+    end
+
   end
   def self.user_details(token)#
     user_details = HTTParty.get("https://api.github.com/user?access_token=#{token}")
