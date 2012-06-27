@@ -7,7 +7,7 @@ gem 'rails', '3.2.3'
 
 gem 'mysql2'
 gem 'oauth2'
-gem 'sinatra'
+#gem 'sinatra'
 gem 'httparty'
 
 
