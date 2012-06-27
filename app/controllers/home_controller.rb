@@ -22,14 +22,16 @@ class HomeController < ApplicationController
     #end
     token = Home.token(params[:code])
     username = Home.user_details(token)
+    repository = Home.repository(username)
     respond_with do |format|
-      format.json {render :json => {:success => true, :auth_token => token, :username => username }}
+      format.json {render :json => {:success => true, :auth_token => token, :username => username, :repository => repository }}
     end
   end
   def auth_token
     if user=Home.check_username(params[:username])
+      repository = Home.repository(params[:username])
       respond_with do |format|
-        format.json {render :json => {:success => true, :auth_token => user.token, :username => user.username }}
+        format.json {render :json => {:success => true, :auth_token => user.token, :username => user.username, :repository => repository }}
       end
     else
       respond_with do |format|
@@ -37,4 +39,13 @@ class HomeController < ApplicationController
       end
     end
   end
+  #def repo
+  #  username = "simanchalaweboniselab"
+  #  repository = Home.repository(username)
+  #  respond_with do |format|
+  #    format.json {render :json => {:success => true, :data => repository }}
+  #  end
+  #end
 end
+
+

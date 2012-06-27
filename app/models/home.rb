@@ -20,14 +20,19 @@ class Home < ActiveRecord::Base
     user_details = HTTParty.get("https://api.github.com/user?access_token=#{token}")
     user_details =  user_details.parsed_response
     username = user_details["login"]
-    logger.info"================================#{username.inspect}"
     user =  self.find_by_token(token)
-    logger.info"---------------------------------#{user.inspect}"
     user.update_attributes(:username => username)
     username
   end
   def self.check_username(username)
     user = self.find_by_username(username)
   end
-
+  def self.repository(username)
+    repository = HTTParty.get("https://api.github.com/users/#{username}/repos")
+    repo = Array.new
+    repository.each_with_index do |i,j|
+      repo.push({:name => i["name"], :id => i["id"]})
+    end
+    return repo
+  end
 end
