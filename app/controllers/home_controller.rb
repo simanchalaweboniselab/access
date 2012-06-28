@@ -10,7 +10,7 @@ class HomeController < ApplicationController
       format.json {render :json => {:success => true, :auth_token => token, :username => username }}
     end
   end
-  #DONE retrieve access token using username
+  #DONE api for auth_token
   def auth_token
     if user=Home.check_username(params[:username])
       respond_with do |format|
@@ -22,7 +22,7 @@ class HomeController < ApplicationController
       end
     end
   end
-  #DONE retrieve repository name and id
+  #DONE api for repository
   def repository
     username = params[:username]
     repository = Home.repository(username)
@@ -30,10 +30,29 @@ class HomeController < ApplicationController
       format.json {render :json => {:success => true, :repository => repository }}
     end
   end
+  #DONE api for branches
   def branch
     branch = Home.branch(params[:username],params[:repository])
-    respond_with do |format|
-      format.json {render :json => {:success => true, :branch => branch }}
+    if !branch.empty?
+      respond_with do |format|
+        format.json {render :json => {:success => true, :branch => branch }}
+      end
+    else
+      respond_with do |format|
+        format.json {render :json => {:success => false }}
+      end
+    end
+  end
+  def commit
+    commits = Home.commit(params[:username],params[:repository])
+    if !commits.empty?
+      respond_with do |format|
+        format.json {render :json => {:success => true, :commits => commits }}
+      end
+    else
+      respond_with do |format|
+        format.json {render :json => {:success => false }}
+      end
     end
   end
 end

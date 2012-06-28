@@ -5,6 +5,15 @@ Access::Application.routes.draw do
       get "repository"
       get "auth_token"
       get "branch"
+      get "commit"
+    end
+  end
+  resources :users do
+    collection do
+      get "access_token"
+      get "repository"
+      get "auth_token"
+      get "branch"
     end
   end
 
