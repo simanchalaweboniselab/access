@@ -30,6 +30,12 @@ class HomeController < ApplicationController
       format.json {render :json => {:success => true, :repository => repository }}
     end
   end
+  def branch
+    branch = Home.branch(params[:username],params[:repository])
+    respond_with do |format|
+      format.json {render :json => {:success => true, :branch => branch }}
+    end
+  end
 end
 
 

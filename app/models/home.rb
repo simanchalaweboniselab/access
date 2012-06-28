@@ -35,4 +35,13 @@ class Home < ActiveRecord::Base
     end
     return repo
   end
+  def self.branch(username, repository)
+    branches = HTTParty.get("https://api.github.com/repos/#{username}/#{repository}/branches")
+    branch = Array.new
+    branches.each_with_index do |i,j|
+      branch.push({:name => i["name"]})
+    end
+    logger.info"-------------------------#{branch.inspect}"
+    return branch
+  end
 end
