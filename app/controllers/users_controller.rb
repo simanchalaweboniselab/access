@@ -10,8 +10,7 @@ class UsersController < ApplicationController
   end
   #DONE retrieve access token using username
   def auth_token
-    user=User.check_username(params[:username])
-    if !user.empty?
+    if user=User.check_username(params[:username])
       respond_with do |format|
         format.json {render :json => {:success => true, :auth_token => user.token, :username => user }}
       end

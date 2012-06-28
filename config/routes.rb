@@ -1,13 +1,5 @@
 Access::Application.routes.draw do
-  resources :home do
-    collection do
-      get "access_token"
-      get "repository"
-      get "auth_token"
-      get "branch"
-      get "commit"
-    end
-  end
+  get "home/index"
   resources :users do
     collection do
       get "access_token"
