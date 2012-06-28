@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
     commits = HTTParty.get("https://api.github.com/repos/#{username}/#{repository}/commits")
     commit = Array.new
     commits.each_with_index do |i,j|
-      commit.push({:name => i["commit"]["committer"]["name"],:message => i["commit"]["message"], :date => Home.date(i["commit"]["committer"]["date"]) })
+      commit.push({:name => i["commit"]["committer"]["name"],:message => i["commit"]["message"], :date => User.date(i["commit"]["committer"]["date"]) })
     end
     return commit
   end
