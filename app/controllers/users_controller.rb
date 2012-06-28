@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def auth_token
     if user=User.check_username(params[:username])
       respond_with do |format|
-        format.json {render :json => {:success => true, :auth_token => user.token, :username => user }}
+        format.json {render :json => {:success => true, :auth_token => user.token, :username => user.username }}
       end
     else
       respond_with do |format|
@@ -47,6 +47,7 @@ class UsersController < ApplicationController
       end
     end
   end
+  #DONE retrieve commits
   def commit
     commits = User.commit(params[:username],params[:repository])
     if !commits.empty?
@@ -55,7 +56,20 @@ class UsersController < ApplicationController
       end
     else
       respond_with do |format|
-        format.json {render :json => {:success => false }}
+        format.json {render :json => {:message => "not found"}}
+      end
+    end
+  end
+  #TODO retrieve organization name
+  def organization
+    organizations = User.organization(params[auth_token])
+    if !organizations.empty?
+      respond_with do |format|
+        format.json {render :json => {:success => true, :organizations => organizations }}
+      end
+    else
+      respond_with do |format|
+        format.json {render :json => {:message => "not found" }}
       end
     end
   end
