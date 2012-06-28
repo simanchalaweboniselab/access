@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   #DONE retrieve access token using username
+  respond_to :json
   def access_token
     token = User.token(params[:code])
     username = User.user_details(token)
