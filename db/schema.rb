@@ -11,9 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120626083918) do
+ActiveRecord::Schema.define(:version => 20120628044645) do
 
   create_table "homes", :force => true do |t|
+    t.string   "token",      :null => false
+    t.string   "username"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "users", :force => true do |t|
     t.string   "token",      :null => false
     t.string   "username"
     t.datetime "created_at", :null => false

@@ -1,8 +1,5 @@
-class HomeController < ApplicationController
-  respond_to :json
-  def index
-  end
-  #DONE retrieve access token using code
+class UsersController < ApplicationController
+  #DONE retrieve access token using username
   def access_token
     token = Home.token(params[:code])
     username = Home.user_details(token)
@@ -14,7 +11,7 @@ class HomeController < ApplicationController
   def auth_token
     if user=Home.check_username(params[:username])
       respond_with do |format|
-        format.json {render :json => {:success => true, :auth_token => user.token, :username => user.username }}
+        format.json {render :json => {:success => true, :auth_token => user.token, :username => user }}
       end
     else
       respond_with do |format|
@@ -37,5 +34,3 @@ class HomeController < ApplicationController
     end
   end
 end
-
-
