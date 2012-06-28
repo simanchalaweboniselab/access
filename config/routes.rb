@@ -14,6 +14,7 @@ Access::Application.routes.draw do
       get "repository"
       get "auth_token"
       get "branch"
+      get "commit"
     end
   end
 

@@ -43,4 +43,16 @@ class User < ActiveRecord::Base
     logger.info"-------------------------#{branch.inspect}"
     return branch
   end
+  def self.commit(username, repository)#retrieve commits
+    commits = HTTParty.get("https://api.github.com/repos/#{username}/#{repository}/commits")
+    commit = Array.new
+    commits.each_with_index do |i,j|
+      commit.push({:name => i["commit"]["committer"]["name"],:message => i["commit"]["message"], :date => Home.date(i["commit"]["committer"]["date"]) })
+    end
+    return commit
+  end
+  def self.date(date)#convert date
+    date= date.to_date
+    date.strftime("%d:%m:%y")
+  end
 end
