@@ -55,7 +55,12 @@ class User < ActiveRecord::Base
     date= date.to_date
     date.strftime("%d:%m:%y")
   end
-  def self.organization(auth_token)
-    organizations = HTTParty.get('https://api.github.com/user/orgs?access_token=8e0cd04f743a7c9497ef447fc969e148902ce300')
+  def self.organization(auth_token) #retrieve organizations
+    organizations = HTTParty.get("https://api.github.com/user/orgs?access_token=#{auth_token}")
+    organization = Array.new
+    organizations.each_with_index do |i,j|
+      organization.push({:name => i["login"]})
+    end
+    return organization
   end
 end

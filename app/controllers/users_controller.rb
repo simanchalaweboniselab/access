@@ -60,15 +60,13 @@ class UsersController < ApplicationController
       end
     end
   end
-  #TODO retrieve organization name
+  #TODO retrieve organization_list
   def organization
-    organizations = User.organization(params[auth_token])
-    if !organizations.empty?
-      respond_with do |format|
+    organizations = User.organization(params[:auth_token])
+    respond_with do |format|
+      if !organizations.empty?
         format.json {render :json => {:success => true, :organizations => organizations }}
-      end
-    else
-      respond_with do |format|
+      else
         format.json {render :json => {:message => "not found" }}
       end
     end
