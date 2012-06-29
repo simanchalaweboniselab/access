@@ -63,4 +63,12 @@ class User < ActiveRecord::Base
     end
     return organization
   end
+  def self.org_repo(org,auth_token)#retrieve all repositories of organization
+    repositories = HTTParty.get("https://api.github.com/orgs/#{org}/repos?access_token=#{auth_token}")
+    repository = Array.new
+    repositories.each_with_index do |i,j|
+      repository.push({:name => i["name"], :full_name => i["full_name"],:private => i["private"], :owner => i["login"], :created_at => User.date(i["created_at"]), :language => i["language"]})
+    end
+    return repository
+  end
 end

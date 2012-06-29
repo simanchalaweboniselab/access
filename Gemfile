@@ -28,7 +28,9 @@ group :production do
   gem 'pg'
   gem 'thin'
 end
-
+group :development do
+  gem 'hirb'
+end
 #gem "pry-remote"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

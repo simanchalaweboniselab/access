@@ -60,12 +60,23 @@ class UsersController < ApplicationController
       end
     end
   end
-  #TODO retrieve organization_list
+  #DONE retrieve organization_list
   def organization
     organizations = User.organization(params[:auth_token])
     respond_with do |format|
       if !organizations.empty?
         format.json {render :json => {:success => true, :organizations => organizations }}
+      else
+        format.json {render :json => {:message => "not found" }}
+      end
+    end
+  end
+  #TODO retrieve all repository of specific organization organization
+  def organization_repository
+    repositories = User.org_repo(params[:organization],params[:auth_token])
+    respond_with do |format|
+      if !repositories.empty?
+        format.json {render :json => {:success => true, :repository => repositories }}
       else
         format.json {render :json => {:message => "not found" }}
       end
