@@ -71,12 +71,34 @@ class UsersController < ApplicationController
       end
     end
   end
-  #TODO retrieve all repository of specific organization organization
+  #DONE retrieve all repository of specific organization organization
   def organization_repository
     repositories = User.org_repo(params[:organization],params[:auth_token])
     respond_with do |format|
       if !repositories.empty?
         format.json {render :json => {:success => true, :repository => repositories }}
+      else
+        format.json {render :json => {:message => "not found" }}
+      end
+    end
+  end
+  #DONE retrieve all branches under specific repository of organization
+  def org_branch
+    branches = User.org_branch(params[:auth_token],params[:owner],params[:repository])
+    respond_with do |format|
+      if !branches.empty?
+        format.json {render :json => {:success => true, :branches => branches }}
+      else
+        format.json {render :json => {:message => "not found" }}
+      end
+    end
+  end
+  #DONE retrieve all commits
+  def org_commit
+    commits = User.org_commit(params[:auth_token],params[:owner],params[:repository],params[:branch])
+    respond_with do |format|
+      if !commits.empty?
+        format.json {render :json => {:success => true, :commits => commits }}
       else
         format.json {render :json => {:message => "not found" }}
       end

@@ -64,11 +64,27 @@ class User < ActiveRecord::Base
     return organization
   end
   def self.org_repo(org,auth_token)#retrieve all repositories of organization
-    repositories = HTTParty.get("https://api.github.com/orgs/#{org}/repos?access_token=#{auth_token}")
+    repositories = HTTParty.get("https://api.github.com/orgs/#{org}/repos?access_token=#{auth_token}&type=private")
     repository = Array.new
     repositories.each_with_index do |i,j|
-      repository.push({:owner => i["owner"]["login"], :name => i["name"],  :full_name => i["full_name"],:private => i["private"],:created_at => User.date(i["created_at"]), :language => i["language"]})
+      repository.push({:owner => i["owner"]["login"], :name => i["name"],  :full_name => i["full_name"],:created_at => User.date(i["created_at"])})
     end
     return repository
+  end
+  def self.org_branch(auth_token, owner, repository)#retrieve all branches
+    branches = HTTParty.get("https://api.github.com/repos/#{owner}/#{repository}/branches?access_token=#{auth_token}")
+    branch = Array.new
+    branches.each_with_index do |i,j|
+      branch.push({:name => i["name"]})
+    end
+    return branch
+  end
+  def self.org_commit(auth_token,owner,repository,branch)#retrieve all commits of specific branch
+    commits = HTTParty.get("https://api.github.com/repos/#{owner}/#{repository}/commits?access_token=#{auth_token}&sha=#{branch}")
+    commit = Array.new
+    commits.each_with_index do |i,j|
+      commit.push({:name => i["commit"]["committer"]["name"],:message => i["commit"]["message"], :date => User.date(i["commit"]["committer"]["date"])})
+    end
+    return commit
   end
 end
