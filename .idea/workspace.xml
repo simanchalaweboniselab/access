@@ -31,19 +31,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="users_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="85" selection-start="2870" selection-end="2870" vertical-scroll-proportion="0.0">
+            <state line="89" column="80" selection-start="3007" selection-end="3007" vertical-scroll-proportion="0.53691274">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/user.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="7" selection-start="3213" selection-end="3213" vertical-scroll-proportion="0.63114756">
+            <state line="97" column="14" selection-start="3919" selection-end="3919" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -69,8 +69,8 @@
         <option value="$PROJECT_DIR$/app/models/home.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
       </list>
     </option>
   </component>
@@ -644,16 +644,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="85" selection-start="2870" selection-end="2870" vertical-scroll-proportion="0.0">
+        <state line="97" column="14" selection-start="3919" selection-end="3919" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="7" selection-start="3213" selection-end="3213" vertical-scroll-proportion="0.63114756">
+        <state line="89" column="80" selection-start="3007" selection-end="3007" vertical-scroll-proportion="0.53691274">
           <folding />
         </state>
       </provider>

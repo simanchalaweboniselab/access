@@ -87,4 +87,28 @@ class User < ActiveRecord::Base
     end
     return commit
   end
+  def self.count_commits(commits)#count commits on date specific
+    i=0
+    date = Array.new
+    count_commits = Array.new
+    commits.each do |d|
+      date[i]=d[:date]
+      i = i+1;
+    end
+    date.sort!
+    i=1
+    temp=date[0]
+    count = 1
+    while i < date.length
+      if temp==date[i]
+        count =  count+1
+      else
+        count_commits.push({:date => temp, :time => count})
+        temp=date[i]
+        count = 1
+      end
+      i = i+1
+    end
+    return count_commits
+  end
 end

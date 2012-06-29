@@ -96,9 +96,10 @@ class UsersController < ApplicationController
   #DONE retrieve all commits
   def org_commit
     commits = User.org_commit(params[:auth_token],params[:owner],params[:repository],params[:branch])
+    count_commits = User.count_commits(commits)
     respond_with do |format|
       if !commits.empty?
-        format.json {render :json => {:success => true, :commits => commits }}
+        format.json {render :json => {:success => true, :commits => commits, :count_commits => count_commits }}
       else
         format.json {render :json => {:message => "not found" }}
       end
