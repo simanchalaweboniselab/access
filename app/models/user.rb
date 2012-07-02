@@ -26,16 +26,16 @@ class User < ActiveRecord::Base
   def self.check_username(username)#find username
     user = self.find_by_username(username)
   end
-  def self.repository(username)#retrieve repositories
-    repository = HTTParty.get("https://api.github.com/users/#{username}/repos")
+  def self.repository(auth_token,username)#retrieve repositories
+    repository = HTTParty.get("https://api.github.com/users/#{username}/repos?access_token=#{auth_token}")
     repo = Array.new
     repository.each_with_index do |i,j|
       repo.push({:name => i["name"], :id => i["id"]})
     end
     return repo
   end
-  def self.branch(username, repository)#retrieve branches
-    branches = HTTParty.get("https://api.github.com/repos/#{username}/#{repository}/branches")
+  def self.branch(auth_token,username, repository)#retrieve branches
+    branches = HTTParty.get("https://api.github.com/repos/#{username}/#{repository}/branches?access_token=#{auth_token}")
     branch = Array.new
     branches.each_with_index do |i,j|
       branch.push({:name => i["name"]})
@@ -43,8 +43,8 @@ class User < ActiveRecord::Base
     logger.info"-------------------------#{branch.inspect}"
     return branch
   end
-  def self.commit(username, repository)#retrieve commits
-    commits = HTTParty.get("https://api.github.com/repos/#{username}/#{repository}/commits")
+  def self.commit(auth_token, username, repository, branch)#retrieve commits
+    commits = HTTParty.get("https://api.github.com/repos/#{username}/#{repository}/commits?access_token=#{auth_token}&sha=#{branch}")
     commit = Array.new
     commits.each_with_index do |i,j|
       commit.push({:name => i["commit"]["committer"]["name"],:message => i["commit"]["message"], :date => User.date(i["commit"]["committer"]["date"]) })
@@ -99,7 +99,7 @@ class User < ActiveRecord::Base
     i=1
     temp=date[0]
     count = 1
-    while i < date.length
+    while i <= date.length
       if temp==date[i]
         count =  count+1
       else

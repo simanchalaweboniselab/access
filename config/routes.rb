@@ -8,7 +8,7 @@ Access::Application.routes.draw do
       get "branch"
       get "commit"
       get "organization"
-      get "organization_repository"
+      get "org_repository"
       get "org_branch"
       get "org_commit"
     end

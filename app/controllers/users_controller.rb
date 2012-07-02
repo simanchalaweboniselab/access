@@ -10,52 +10,44 @@ class UsersController < ApplicationController
   end
   #DONE retrieve access token using username
   def auth_token
-    if user=User.check_username(params[:username])
-      respond_with do |format|
+    respond_with do |format|
+      if user=User.check_username(params[:username])
         format.json {render :json => {:success => true, :auth_token => user.token, :username => user.username }}
-      end
-    else
-      respond_with do |format|
+      else
         format.json {render :json => {:success => false}}
       end
     end
   end
   #DONE retrieve repository name and id
   def repository
-    username = params[:username]
-    repository = User.repository(username)
-    if !repository.empty?
-      respond_with do |format|
+    repository = User.repository(params[:auth_token],params[:username])
+    respond_with do |format|
+      if !repository.empty?
         format.json {render :json => {:success => true, :repository => repository }}
-      end
-    else
-      respond_with do |format|
+      else
         format.json {render :json => {:message => "repository not found" }}
       end
     end
   end
   #DONE retrieve branches name
   def branch
-    branch = User.branch(params[:username],params[:repository])
-    if !branch.empty?
-      respond_with do |format|
+    branch = User.branch(params[:auth_token],params[:username],params[:repository])
+    respond_with do |format|
+      if !branch.empty?
         format.json {render :json => {:success => true, :branch => branch }}
-      end
-    else
-      respond_with do |format|
+      else
         format.json {render :json => {:success => false }}
       end
     end
   end
   #DONE retrieve commits
   def commit
-    commits = User.commit(params[:username],params[:repository])
-    if !commits.empty?
-      respond_with do |format|
-        format.json {render :json => {:success => true, :commits => commits }}
-      end
-    else
-      respond_with do |format|
+    commits = User.commit(params[:auth_token],params[:username],params[:repository],params[:branch])
+    count_commits = User.count_commits(commits)
+    respond_with do |format|
+      if !commits.empty?
+        format.json {render :json => {:success => true, :commits => commits, :count_commits => count_commits }}
+      else
         format.json {render :json => {:message => "not found"}}
       end
     end
@@ -72,7 +64,7 @@ class UsersController < ApplicationController
     end
   end
   #DONE retrieve all repository of specific organization organization
-  def organization_repository
+  def org_repository
     repositories = User.org_repo(params[:organization],params[:auth_token])
     respond_with do |format|
       if !repositories.empty?
