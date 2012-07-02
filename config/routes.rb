@@ -12,6 +12,7 @@ Access::Application.routes.draw do
       get "org_branch"
       get "org_commit"
       get "committer_commit"
+      get "org_member"
     end
   end
 

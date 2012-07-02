@@ -110,4 +110,15 @@ class UsersController < ApplicationController
       end
     end
   end
+  #DONE retrieve all members of organization
+  def org_member
+    members = User.org_member(params[:auth_token], params[:organization])
+    respond_with do |format|
+      if !members.empty?
+        format.json{render :json => {:success => true, :members => members}}
+      else
+        format.json {render :json => {:message => "not found" }}
+      end
+    end
+  end
 end

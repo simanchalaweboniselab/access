@@ -120,7 +120,6 @@ class User < ActiveRecord::Base
     committer
   end
   def self.committer_commits(commits,committer_name,date)
-    logger.info("========================com#{commits.inspect}")
     committer_commits = Array.new
     commits.each do |i|
       if (committer_name == i[:name] && date == i[:date])
@@ -128,5 +127,13 @@ class User < ActiveRecord::Base
       end
     end
     committer_commits
+  end
+  def self.org_member(auth_token,organization)
+    members = HTTParty.get("https://api.github.com/orgs/#{organization}/members?access_token=#{auth_token}&type=private")
+    member = Array.new
+    members.each do |m|
+      member.push(:name => m["login"],:id => m["id"])
+    end
+    member
   end
 end
