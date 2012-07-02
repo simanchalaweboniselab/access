@@ -111,4 +111,22 @@ class User < ActiveRecord::Base
     end
     return count_commits
   end
+  def self.committer(commits)
+    committer = Array.new
+    commits.each do |c|
+      committer.push(c[:name])
+    end
+    committer = committer.uniq
+    committer
+  end
+  def self.committer_commits(commits,committer_name,date)
+    logger.info("========================com#{commits.inspect}")
+    committer_commits = Array.new
+    commits.each do |i|
+      if (committer_name == i[:name] && date == i[:date])
+        committer_commits.push(i)
+      end
+    end
+    committer_commits
+  end
 end

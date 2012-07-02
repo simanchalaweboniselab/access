@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     branch = User.branch(params[:auth_token],params[:username],params[:repository])
     respond_with do |format|
       if !branch.empty?
-        format.json {render :json => {:success => true, :branch => branch }}
+        format.json {render :json => {:success => true, :branches => branch }}
       else
         format.json {render :json => {:success => false }}
       end
@@ -89,9 +89,22 @@ class UsersController < ApplicationController
   def org_commit
     commits = User.org_commit(params[:auth_token],params[:owner],params[:repository],params[:branch])
     count_commits = User.count_commits(commits)
+    committer = User.committer(commits)
     respond_with do |format|
       if !commits.empty?
-        format.json {render :json => {:success => true, :commits => commits, :count_commits => count_commits }}
+        format.json {render :json => {:success => true, :committer => committer, :commits => commits, :count_commits => count_commits }}
+      else
+        format.json {render :json => {:message => "not found" }}
+      end
+    end
+  end
+  #DONE retrieve all commits based on name and date
+  def committer_commit
+    commits = User.org_commit(params[:auth_token],params[:owner],params[:repository],params[:branch])
+    committer_commits = User.committer_commits(commits,params[:committer_name],params[:date])
+    respond_with do |format|
+      if !committer_commits.empty?
+        format.json{render :json => {:success => true, :committer_commits => committer_commits}}
       else
         format.json {render :json => {:message => "not found" }}
       end
